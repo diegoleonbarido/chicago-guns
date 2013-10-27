@@ -1,0 +1,222 @@
+getwd()
+setwd("/Users/diego/chicago-guns")
+setwd("/Users/diego/chicago-guns/")
+setwd("~/Users/diego/chicago-guns/")
+setwd("/Users/diego/dataviz-fall-2013/chicago-guns/")
+getwd()
+setwd("/Users/diego/dataviz-fall-2013/chicago-guns/")
+data <- read.delim("chicago-guns.txt", header = F)
+head(data)
+names(data)
+names(data) <- c("county_orig", "guns_orig")
+head(data)
+data$countyorig
+data$county_orig
+test<- "ACCOMACK(Va)"
+test
+?strplit
+?strsplit
+strsplit(test, split ="C")
+strsplit(test, split ="()")
+strsplit(test, split ="(")
+strsplit(test, split ="\\(")
+names(test) <- c("one", "two")
+test
+strsplit(test, split ="\\(")
+split <- strsplit(test, split ="\\(")
+split
+test
+names(split) <- c("one", "two")
+test
+split
+class(split)
+sapply(split, function(x x[2]))
+sapply(split, function(x x[2]))
+sapply(split, function(x) x[2]))
+sapply(split, function(x) x[2])
+test2 <- sapply(split, function(x) x[2])
+test2
+useful <- strsplit(test, split ="\\)")
+useful
+useful <- strsplit(split, split ="\\)")
+get_second_element <- function(item) { return (item[2])}
+sapply(split, get_second_element)
+split
+useful <- strsplit(split, split= "//)")
+useful <- strsplit(split, split= "\\)")
+split
+sapply(split, get_second_element)
+names(data)
+apple <- sapply(split, get_second_element)
+apple
+banana <- strsplit(split, split="\\)")
+banana <- strsplit(apple, split="\\)")
+banana
+getwd()
+test2 <- read.delim("chicago-guns.txt")
+strsplit(test2, split ="\\(")
+test2
+data
+head(data)
+strsplit(test2[1], split ="\\(")
+column1 <- test2[1]
+column1
+head(column1)
+column1
+strsplit(column1, split ="\\(")
+data <- read.delim("chicago-guns.txt", header=F, stringsAsFactors=F)
+names(data) <- c("county_orig", "guns_orig")
+split <- strsplit(data$county_orig, split="\\(")
+data$state_clean <- sapply(split, get_second_element)
+data$state_clean
+head(data)
+?gsub
+gsub("\\)","", data$state_clean)
+head(data)
+data$state_clean <- gsub("\\)","", data$state_clean)
+head(data)
+get_first_element <- function(item) { return(item[1])}
+data$county_clean <- sapply(split, get_first_element)
+head(data)
+class(data$guns_orig)
+data$guns_orig
+head(data)
+guns_clean <- gsub("\\", "", data$guns_orig)
+data$guns_clean <- gsub("\\", "", data$guns_orig)
+data$guns_clean <- gsub("\\,", "", data$guns_orig)
+head(data)
+class(data$guns_clean)
+sum(data$guns_clean)
+data$guns_clean <- as.numeric(gsub("\\,", "", data$guns_orig))
+class(data$guns_clean)
+sum(data$guns_clean)
+plot(data$guns_clean)
+library(maptools)
+gpclibPermit()
+states <- readShapePoly("/shape_files/states.shp")
+states <- readShapePoly("shape_files/states.shp")
+plot(shapes)
+plot(shapes)
+plot(states)
+plot(states)
+states <- readShapePoly("shape_files/good_shapes/states.shp")
+getwd()
+states <- readShapePoly("shape_files/good_shapes/states.shp")
+states <- readShapePoly("/shape_files/good_shapes/states.shp")
+states <- readShapePoly("shape_files/good_shapes/nytlayout_state.shp")
+plot(states)
+plot(states, col = rainbow(100))
+map_data <- data.frame(states)
+head(map_data)
+?merge
+names(data)
+test <- rename(data, c("county_clean"="STATE_ABBR""))
+test
+test2 <- rename(data, c("county_clean"="STATE_ABBR"))
+names(data)
+names(data) <- c("county_orig", "guns_orig", "STATE_ABBR", "county_clean", "guns_clean")
+names(data)
+test3 <- merge(data, map_data, by = "STATE_ABBR")
+test3
+dim(map_data)
+dim(daa)
+dim(data)
+names2(test2)
+names(test2)
+data
+head(data)
+agg <- aggregate(data$guns_clean, list(data$STATE_ABBR))
+agg <- aggregate(data$guns_clean, list(data$STATE_ABBR), sum)
+head(agg)
+dim(agg)
+agg
+names(guns_by_state) <- c("STATE_ABBR", "guns")
+guns_by_state <- aggregate(data$guns_clean, list(data$STATE_ABBR), sum)
+head(guns_by_state)
+names(guns_by_state) <- c("STATE_ABBR", "guns")
+guns_by_state
+head(guns_by_state)
+guns_by_state <- guns_by_state[(guns_by_state$guns, descending = TRUE),]
+guns_by_state <- guns_by_state[order(guns_by_state$guns, descending = TRUE),]
+guns_by_state <- guns_by_state[order(guns_by_state$guns, descending = TRUE),]
+guns_by_state <- guns_by_state[order(guns_by_state$guns, decreasing = TRUE),]
+guns_by_state
+mapping_out <- merge(map_data,guns_by_state, by = "STATE_ABBR")
+plot(mapping_out)
+dim(mapping_out)
+head(mapping_out)
+plot(STATE_ABBR,guns)
+head(mapping_out)
+head(mapping_out, n=20)
+class(mapping_out)
+class(states)
+head(states)
+plot(guns_by_state$STATE_ABBR,guns_by_state$guns)
+head(guns_by_state)
+guns_by_state$STATE_ABBR
+head(map_data)
+head(mapping_out)
+plot(map_data, col=rainbow(40))
+plot(shapes, col=rainbow(40))
+plot(states, col=rainbow(40))
+plot(states, col="red")
+match(mapping_out$STATE_ABBR, map_data$STATE_ABBR)
+match_order <- match(mapping_out$STATE_ABBR, map_data$STATE_ABBR)
+mapping_out[match_order]
+mapping_out$STATE_ABBR[match_order]
+match_order <- match(map_data$STATE_ABBR, mapping_out$STATE_ABBR)
+mapping_out$STATE_ABBR[match_order]
+match(mapping_out$STATE_ABBR, map_data$STATE_ABBR)
+head(mapping_out)
+head(map_data)
+head(map_data)
+match_order <- match(mapping_out$STATE_ABBR, map_data$STATE_ABBR)
+match_order <- match(map_data$STATE_ABBR, mapping_out$STATE_ABBR)
+head(mapping_out)
+map_data$guns <- mapping_out$guns[match_order]
+head(map_data)
+head(map_data, 20)
+hist(map_data$guns)
+hist(map_data$guns)
+map_breaks <- c(0,1500,3000,5000,15000,30000)
+buckes <- cut(map_data$guns, breaks = map_breaks)
+buckets <- cut(map_data$guns, breaks = map_breaks)
+numeric_buckets <- as.numeric(buckets)
+install.packages("RColorBrewer")
+library(RColorBrewer)
+display.brewer.all()
+colors <- brewer.pals(6,"Reds")
+colors <- brewer.pal(6,"Reds")
+colors <- brewer.pal(5,"Reds")
+colors[numeric_buckets]
+plot(states, col = colors[numeric_buckets])
+map_breaks <- c(0,250,500,750,1000,3000, 8000, 30000)
+buckets <- cut(map_data$guns, breaks = map_breaks)
+numeric_buckets <- as.numeric(buckets)
+colors <- brewer.pals(7,"Reds")
+colors <- brewer.pal(7,"Reds")
+colors[numeric_buckets]
+plot(states, col = colors[numeric_buckets])
+plot(states, col = colors[numeric_buckets])
+hist(map_data$guns)
+hist(map_data$guns)
+map_breaks <- c(0,2500,5000,10000,30000)
+numeric_buckets <- as.numeric(buckets)
+colors <- brewer.pal(4,"Reds")
+plot(states, col = colors[numeric_buckets])
+colors <- brewer.pal(5,"Reds")
+plot(states, col = colors[numeric_buckets])
+colors <- brewer.pal(6,"Reds")
+plot(states, col = colors[numeric_buckets])
+colors <- brewer.pal(7,"Reds")
+plot(states, col = colors[numeric_buckets])
+map_breaks <- c(0,2500,5000,10000,30000)
+buckets <- cut(map_data$guns, breaks = map_breaks)
+numeric_buckets <- as.numeric(buckets)
+colors <- brewer.pal(4,"Reds")
+plot(states, col = colors[numeric_buckets])
+map_breaks <- c(0,1500,3000,6000,10000,30000)
+buckets <- cut(map_data$guns, breaks = map_breaks)
+numeric_buckets <- as.numeric(buckets)
+colors <- brewer.pal(5,"Reds")
+plot(states, col = colors[numeric_buckets])
